@@ -6,7 +6,7 @@
     "dev": "vue-cli-service serve --copy --mode dev",
     "pro": "vue-cli-service build  --mode pro",
     "test": "vue-cli-service build  --mode test",
-    "lint": "vue-cli-service lint",
+    "lint": "vue-cli-service lint --fix",
     "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {

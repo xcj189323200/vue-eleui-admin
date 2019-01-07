@@ -11,8 +11,8 @@ export default {
     getAllUsers(params) {
         return this.get({
             url: this.API_HOST + `users`,
-            params,
-        });
+            params
+        })
     },
     /**
      * @description 获取用户详情
@@ -22,8 +22,8 @@ export default {
      */
     getUsers(params) {
         return this.get({
-            url: this.API_HOST + `users/${params.id}`,
-        });
+            url: this.API_HOST + `users/${params.id}`
+        })
     },
     /**
      * @description 创建用户
@@ -34,8 +34,8 @@ export default {
     createUser(data) {
         return this.post({
             url: this.API_HOST + `users`,
-            data: { UserDTO: data },
-        });
+            data: { UserDTO: data }
+        })
     },
     /**
      * @description 编辑用户
@@ -46,7 +46,7 @@ export default {
     updateUser(data) {
         return this.put({
             url: this.API_HOST + `users`,
-            data: { UserDTO: data },
-        });
-    },
-};
+            data: { UserDTO: data }
+        })
+    }
+}
