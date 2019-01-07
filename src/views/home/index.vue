@@ -12,6 +12,7 @@ export default {
   components: {
   },
   created() {
+    console.log('这是created home')
   }
 }
 </script>
