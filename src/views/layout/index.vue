@@ -4,7 +4,14 @@
       <Header></Header>
       <side-nav/>
       <tags-view/>
-      <router-view/>
+      <div class="main-view">
+        <transition name="fade-transform" mode="out-in">
+          <keep-alive>
+            <router-view v-if="$route.meta.keepAlive"></router-view>
+          </keep-alive>
+          <router-view v-if="!$route.meta.keepAlive"></router-view>
+        </transition>
+      </div>
     </div>
   </div>
 </template>
@@ -14,17 +21,16 @@ import Header from './components/Header'
 import TagsView from './components/TagsView'
 import SideNav from './components/SideNav'
 export default {
-	name: 'Layout',
-	components: {
+  name: 'Layout',
+  components: {
     Header,
     TagsView,
     SideNav
-	},
-	created () {
-	}
+  },
+  created() {
+  }
 }
 </script>
 <style lang="scss" scoped>
-
 </style>
 
