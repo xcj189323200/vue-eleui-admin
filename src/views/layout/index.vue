@@ -48,7 +48,6 @@ export default {
   methods: {
 
     getCacheView_handler(val) {
-      console.log(val, '----val')
       this.cacheList = val
     }
   }

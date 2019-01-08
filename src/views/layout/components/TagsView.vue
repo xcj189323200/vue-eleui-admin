@@ -33,7 +33,6 @@ export default {
     },
     cacheViews: {
       handler(val) {
-        console.log(val, 'pppp')
         this.$emit('getCacheView', val)
       },
       immediate: true
@@ -44,7 +43,6 @@ export default {
   methods: {
     addViewTags() {
       const { name, meta } = this.$route
-      console.log(this.$route, 'this.$route')
       const isAddRoute = this.tagList.some((k) => { return k.name === name })
       if (name && !isAddRoute) {
         meta.keepAlive && this.cacheViews.push(name)
