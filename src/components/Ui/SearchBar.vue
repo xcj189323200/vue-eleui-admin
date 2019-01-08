@@ -19,11 +19,11 @@ export default {
         return {
         }
       },
-  methods:{
+  methods: {
   },
-  created(){
+  created() {
   },
-  watch:{
+  watch: {
   }
 }
 </script>

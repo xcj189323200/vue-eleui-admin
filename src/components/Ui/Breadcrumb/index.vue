@@ -1,16 +1,20 @@
 <template>
   <el-breadcrumb class="app-breadcrumb" separator="/">
     <transition-group name="breadcrumb">
-      <el-breadcrumb-item v-for="(item,index) in levelList"  :key="item.path">
-        <span v-if="item.redirect==='noredirect'||index==levelList.length-1" class="no-redirect">{{ item.meta.title }}</span>
-        <a v-else @click.prevent="handleLink(item)">{{ item.meta.title }}</a>
+      <el-breadcrumb-item v-for="(item,index) in levelList" :key="item.path">
+        <span v-if="index==levelList.length-1" class="no-redirect">{{ item.meta.title }}</span>
+        <a v-else @click.prevent="enter_clickHandler(item)">{{ item.meta.title }}</a>
       </el-breadcrumb-item>
     </transition-group>
   </el-breadcrumb>
 </template>
 
 <script>
-
+/*
+* @Author: 徐长剑
+* @Date: 2019-01-08 14:57:16
+* @Description: 面包屑导航
+*/
 export default {
   data() {
     return {
@@ -18,22 +22,34 @@ export default {
     }
   },
   watch: {
-    $route() {
-      this.getBreadcrumb()
+    $route: {
+      handler(val) {
+        this.getBreadcrumb()
+      },
+      immediate: true
     }
   },
   created() {
-    console.log('----222222222')
-    this.getBreadcrumb()
+
   },
   methods: {
+    /*
+    * @Description: 进入页面
+    */
+    enter_clickHandler(item) {
+      const { path } = item
+      this.$router.push({ path })
+    },
+    /*
+    * @Description: 获得面包屑导航
+    */
     getBreadcrumb() {
+      console.log(this.$route, 'this.$route')
       let matched = this.$route.matched.filter(item => {
         if (item.name) {
           return true
         }
       })
-      console.log(matched, '----matched')
       const first = matched[0]
       if (first && first.name !== 'home') {
         matched = [{ path: '/home', meta: { title: '首页' } }, ...matched]
