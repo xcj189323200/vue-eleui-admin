@@ -46,7 +46,38 @@
 export default {
   data () {
     return {
-
+      datas: [
+				{
+					groupName: '门店订单检测分析',
+					path: 'storeOrder',
+					children: [
+						{
+							urlLink: 'storeOrder-list',
+							permissionName: '门店订单检测分析'
+						}
+					]
+				},
+				{
+					groupName: '订单管理',
+					path: 'orders',
+					children: [
+						{
+							urlLink: 'orders-list',
+							permissionName: '订单管理'
+						}
+					]
+				},
+				{
+					groupName: '通知管理',
+					path: 'notices',
+					children: [
+						{
+							urlLink: 'notices-list',
+							permissionName: '通知管理'
+						}
+					]
+				}
+			]
     }
   },
   mounted() {

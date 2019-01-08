@@ -1,16 +1,20 @@
 <template>
   <div id="Layout">
-    <div class="main-container" :style="{ height: getScreenHeight +'px', overflow: 'scroll' }">
+    <div class="main-container" :style="{ height: getScreenHeight +'px'}">
       <side-nav/>
-      <tags-view @getCacheView="getCacheView_handler"/>
+        <div class="content">
+        <Header></Header>
 
-      <transition name="fade-transform" mode="out-in">
-        <div class="main-view">
-          <keep-alive :include="cacheList">
-            <router-view :key="this.$route.fullPath"/>
-          </keep-alive>
+        <tags-view @getCacheView="getCacheView_handler"/>
+
+        <transition name="fade-transform" mode="out-in">
+          <div class="main-view">
+            <keep-alive :include="cacheList">
+              <router-view :key="this.$route.fullPath"/>
+            </keep-alive>
+          </div>
+        </transition>
         </div>
-      </transition>
     </div>
   </div>
 </template>
@@ -53,6 +57,7 @@ export default {
 #Layout {
   .main-container{
     display: flex;
+    overflow: auto;
   }
   .content{
     width: 100%

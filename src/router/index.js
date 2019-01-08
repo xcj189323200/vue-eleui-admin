@@ -29,11 +29,38 @@ export default new Router({
       ]
     },
     {
+      path: '/storeOrder',
+      component: Layout,
+      hidden: true,
+      children: [
+        {
+          name: 'storeOrder-list',
+          path: 'list',
+          meta: { title: '门店订单检测分析', keepAlive: true },
+          component: () => import('../views/home/index.vue')
+        }
+      ]
+    },
+    {
+      path: '/storeInfo',
+      component: Layout,
+      hidden: true,
+      children: [
+        {
+          name: 'storeInfo-info',
+          path: 'info',
+          meta: { title: '门店基本信息', keepAlive: true },
+          component: () => import('../views/home/index.vue')
+        }
+      ]
+    },
+    {
       path: '/login',
       name: 'login',
       meta: { isSide: true }
       // component: () => import(/* webpackChunkName: "login" */ "../views/Login/index.vue"),
     },
+
     {
       path: '*', // 其他页面，强制跳转到登录页面
       name: '*',
