@@ -1,12 +1,16 @@
 <template>
-  <div id="Header">头部</div>
+  <div id="Header">
+    <Breadcrumb></Breadcrumb>
+  </div>
 </template>
 
 <script>
-
+import Breadcrumb from '@components/Ui/Breadcrumb/index.vue'
 export default {
   name: 'Header',
-  components: {},
+  components: {
+    Breadcrumb
+  },
   created() { }
 }
 </script>
