@@ -1,3 +1,4 @@
 export default {
-    BASE_IMG_URL: 'https://dj001.oss-cn-beijing.aliyuncs.com/' // 图片公共访问前缀
+    BASE_IMG_URL: 'https://dj001.oss-cn-beijing.aliyuncs.com/', // 图片公共访问前缀
+    DEFAULT_COLOR: '#409EFF'
 }
