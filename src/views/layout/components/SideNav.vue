@@ -1,13 +1,6 @@
 <template>
-    <el-aside width="200px" style="background:#545c64;">
-      <el-menu
-      default-active="2"
-      class="el-menu-vertical-demo"
-      @open="handleOpen"
-      @close="handleClose"
-      background-color="#545c64"
-      text-color="#fff"
-      active-text-color="#ffd04b">
+  <el-aside width="200px" style="background:#545c64;">
+    <el-menu default-active="2" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" background-color="#545c64" text-color="#fff" active-text-color="#ffd04b">
       <el-submenu class="nav-item" index="1">
         <template slot="title">
           <i class="el-icon-location"></i>
@@ -26,11 +19,11 @@
           <el-menu-item index="1-4-1">选项1</el-menu-item>
         </el-submenu>
       </el-submenu>
-      <el-menu-item class="nav-item"  index="2">
+      <el-menu-item class="nav-item" index="2">
         <i class="el-icon-menu"></i>
         <span slot="title">导航二</span>
       </el-menu-item>
-      <el-menu-item class="nav-item"  index="3" disabled>
+      <el-menu-item class="nav-item" index="3" disabled>
         <i class="el-icon-document"></i>
         <span slot="title">导航三</span>
       </el-menu-item>
@@ -39,12 +32,12 @@
         <span slot="title">导航四</span>
       </el-menu-item>
     </el-menu>
-    </el-aside>
+  </el-aside>
 </template>
 
 <script>
 export default {
-  data () {
+  data() {
     return {
 
     }
@@ -53,21 +46,21 @@ export default {
 
   },
   methods: {
-    handleOpen () {},
-    handleClose () {},
-    close () {}
+    handleOpen() { },
+    handleClose() { },
+    close() { }
   }
 }
 </script>
 
-<style lang="stylus" scoped>
-.el-menu-vertical-demo{
-  border-right none
+<style lang="scss" scoped>
+.el-menu-vertical-demo {
+  border-right: none;
 }
-.nav-item >div:hover{
-  .nav-title, i{
-    color #409eff
+.nav-item > div:hover {
+  .nav-title,
+  i {
+    color: #409eff;
   }
-
 }
 </style>
