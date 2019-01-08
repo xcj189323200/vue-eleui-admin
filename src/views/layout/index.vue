@@ -3,15 +3,15 @@
     <div class="main-container">
       <Header></Header>
       <side-nav/>
-      <tags-view/>
-      <div class="main-view">
-        <transition name="fade-transform" mode="out-in">
-          <keep-alive>
-            <router-view v-if="$route.meta.keepAlive"></router-view>
+      <tags-view @getCacheView="getCacheView_handler"/>
+
+      <transition name="fade-transform" mode="out-in">
+        <div class="main-view">
+          <keep-alive :include="cacheList">
+            <router-view :key="this.$route.fullPath"/>
           </keep-alive>
-          <router-view v-if="!$route.meta.keepAlive"></router-view>
-        </transition>
-      </div>
+        </div>
+      </transition>
     </div>
   </div>
 </template>
@@ -22,12 +22,26 @@ import TagsView from './components/TagsView'
 import SideNav from './components/SideNav'
 export default {
   name: 'Layout',
+  data() {
+    return {
+      cacheList: []
+    }
+  },
   components: {
     Header,
     TagsView,
     SideNav
   },
+  computed: {
+
+  },
   created() {
+  },
+  methods: {
+    getCacheView_handler(val) {
+      console.log(val, '----val')
+      this.cacheList = val
+    }
   }
 }
 </script>

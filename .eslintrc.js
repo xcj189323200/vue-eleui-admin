@@ -135,7 +135,7 @@ module.exports = {
     'yield-star-spacing': [2, 'both'],//在*in yield*表达式周围强制使用间距
     'yoda': [2, 'never'],//要求或不允许尤达条件
     'prefer-const': 2,//建议使用const
-    'object-curly-spacing': [2, 'always', { objectsInObjects: false }],//在大括号内强制一致的间距
+    'object-curly-spacing': [2, 'always'],//在大括号内强制一致的间距
     'array-bracket-spacing': [2, 'never'],//禁止或强制括号内的空格
     'vue/require-v-for-key': 2,
     'vue/require-prop-types': 0,

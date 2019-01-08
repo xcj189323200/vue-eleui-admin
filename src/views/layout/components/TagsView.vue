@@ -17,7 +17,8 @@ export default {
   components: {},
   data() {
     return {
-      tagList: []
+      tagList: [],
+      cacheViews: []
     }
   },
   computed: {
@@ -29,17 +30,25 @@ export default {
         this.addViewTags()
       },
       immediate: true
+    },
+    cacheViews: {
+      handler(val) {
+        console.log(val, 'pppp')
+        this.$emit('getCacheView', val)
+      },
+      immediate: true
     }
   },
   mounted() {
   },
   methods: {
     addViewTags() {
-      const { name } = this.$route
+      const { name, meta } = this.$route
+      console.log(this.$route, 'this.$route')
       const isAddRoute = this.tagList.some((k) => { return k.name === name })
       if (name && !isAddRoute) {
+        meta.keepAlive && this.cacheViews.push(name)
         this.tagList.push(this.$route)
-        // this.$store.dispatch('addView', this.$route)
       }
       return false
     },
@@ -48,10 +57,12 @@ export default {
     },
     closeTag_clickHandler(tag = {}, index) {
       const { name } = this.$route
-      this.tagList.splice(index, 1)
+      const _spliceRoute = this.tagList.splice(index, 1)[0]
+      this.cacheViews = this.cacheViews.filter(r => { return r !== _spliceRoute.name })
+      console.log(this.cacheViews, 'this.cacheViews')
       if (tag.name === name) {
-        const { path, query } = this.tagList[0] || { path: 'home', query: {}}
-        this.$router.push({ path, query })
+        const { fullPath } = this.tagList[0] || { fullPath: 'home' }
+        this.$router.push({ path: fullPath })
       }
     }
   }
@@ -87,7 +98,7 @@ export default {
         margin-right: 15px;
       }
       &.active {
-        background-color:$tabColor;
+        background-color: $tabColor;
         color: #fff;
         border-color: $tabColor;
         &::before {
