@@ -1,6 +1,7 @@
 <template>
   <div id="Header">
     <div class="header_left">
+      <hamburger :toggle-click="toggleSideBar" :is-active="sidebar.opened" class="hamburger-container"/>
       <Breadcrumb/>
     </div>
     <div class="header_right">
@@ -24,6 +25,7 @@
 
 <script>
 import Breadcrumb from '@components/Ui/Breadcrumb/index.vue'
+import Hamburger from '@components/Ui/Hamburger/index.vue'
 import ThemePicker from '@components/Ui/ThemePicker'
 import { mapActions, mapGetters } from 'vuex'
 import Utils from '@utils/utils'
@@ -32,7 +34,8 @@ export default {
   name: 'Header',
   components: {
     Breadcrumb,
-    ThemePicker
+    ThemePicker,
+    Hamburger
   },
   data() {
     return {
@@ -42,6 +45,7 @@ export default {
   },
   computed: {
     ...mapGetters({
+      sidebar: 'sidebar'
       // userInfo: "getUserInfo",
       // stores: "getStores",
       // storeLen: "getStoreLen"
@@ -55,6 +59,9 @@ export default {
      * */
     loginOut_clickHandler() {
       this.loginOut()
+    },
+    toggleSideBar () {
+
     }
   },
   created() {

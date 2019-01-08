@@ -5,9 +5,12 @@
  * @Last Modified time: 2018-08-27 13:49:09
  */
 export default {
-    //用户的登陆信息和token
+    // 用户的登陆信息和token
     users: {
         // isLogin: false,
         // token:''
     },
-};
+    sidebar: {
+      opened: true
+    }
+}
