@@ -59,7 +59,6 @@ export default {
       const { name } = this.$route
       const _spliceRoute = this.tagList.splice(index, 1)[0]
       this.cacheViews = this.cacheViews.filter(r => { return r !== _spliceRoute.name })
-      console.log(this.cacheViews, 'this.cacheViews')
       if (tag.name === name) {
         const { fullPath } = this.tagList[0] || { fullPath: 'home' }
         this.$router.push({ path: fullPath })
