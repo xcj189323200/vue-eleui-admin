@@ -15,7 +15,7 @@
           <span class="nav-title">{{item.groupName}}</span>
         </template>
         <el-menu-item-group v-for="(child, index) in item.children" :key="index">
-          <router-link :to="name: child.urlLink">
+          <router-link :to="{name: child.urlLink}">
           <el-menu-item :index="child.urlLink">{{child.permissionName}}</el-menu-item>
           </router-link>
         </el-menu-item-group>
