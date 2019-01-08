@@ -61,6 +61,7 @@ export default {
   }
   .content {
     width: 100%;
+    overflow: hidden;
   }
 }
 </style>
