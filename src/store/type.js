@@ -6,5 +6,6 @@
  */
 
 export default {
-    SET_TOKEN: "SET_TOKEN" // 设置用户信息
-};
+    SET_TOKEN: 'SET_TOKEN', // 设置用户信息
+    SET_SIDERBAR_TOGGLE: 'SET_SIDERBAR_TOGGLE' // Hamburg
+}
