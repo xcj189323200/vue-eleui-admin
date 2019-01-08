@@ -34,22 +34,22 @@ export default {
           ]
         },
         {
-          groupName: '订单管理',
-          path: 'orders',
+          groupName: '门店基本信息表',
+          path: 'storeInfo',
           children: [
             {
-              urlLink: 'orders-list',
-              permissionName: '订单管理'
+              urlLink: 'storeInfo-edit',
+              permissionName: '编辑页面'
             }
           ]
         },
         {
-          groupName: '通知管理',
-          path: 'notices',
+          groupName: '门店培训详情',
+          path: 'storeTrain',
           children: [
             {
-              urlLink: 'notices-list',
-              permissionName: '通知管理'
+              urlLink: 'storeTrain-info',
+              permissionName: '门店培训详情'
             }
           ]
         }

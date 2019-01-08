@@ -37,7 +37,7 @@ export default new Router({
           name: 'storeOrder-list',
           path: 'list',
           meta: { title: '门店订单检测分析', keepAlive: true },
-          component: () => import('../views/home/index.vue')
+          component: () => import('../views/storeOrder/list.vue')
         }
       ]
     },
@@ -47,10 +47,36 @@ export default new Router({
       hidden: true,
       children: [
         {
-          name: 'storeInfo-info',
+          name: 'storeInfo-edit',
+          path: 'edit',
+          meta: { title: '门店基本信息', keepAlive: true },
+          component: () => import('../views/storeInfo/edit.vue')
+        }
+      ]
+    },
+    {
+      path: '/storeTrain',
+      component: Layout,
+      hidden: true,
+      children: [
+        {
+          name: 'storeTrain-info',
           path: 'info',
           meta: { title: '门店基本信息', keepAlive: true },
-          component: () => import('../views/home/index.vue')
+          component: () => import('../views/storeTrain/info.vue')
+        }
+      ]
+    },
+    {
+      path: '/storeInfo',
+      component: Layout,
+      hidden: true,
+      children: [
+        {
+          name: 'storeInfo-edit',
+          path: 'edit',
+          meta: { title: '门店基本信息', keepAlive: true },
+          component: () => import('../views/storeInfo/edit.vue')
         }
       ]
     },
