@@ -14,6 +14,7 @@ export default {
 #Header {
   height: 50px;
   line-height: 50px;
+  width: 100%;
 }
 </style>
 
