@@ -2,7 +2,7 @@
   <div id="Layout">
     <div class="main-container" :style="{ height: getScreenHeight +'px'}">
       <side-nav/>
-        <div class="content">
+      <div class="content">
         <Header></Header>
 
         <tags-view @getCacheView="getCacheView_handler"/>
@@ -14,7 +14,7 @@
             </keep-alive>
           </div>
         </transition>
-        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -38,7 +38,7 @@ export default {
   },
   created() {
   },
-  mounted () {
+  mounted() {
     this.getScreenHeight = `${document.documentElement.clientHeight}`
     // 然后监听window的resize事件．在浏览器窗口变化时再设置下背景图高度．
     window.onresize = () => {
@@ -46,6 +46,7 @@ export default {
     }
   },
   methods: {
+
     getCacheView_handler(val) {
       console.log(val, '----val')
       this.cacheList = val
@@ -55,12 +56,12 @@ export default {
 </script>
 <style lang="scss" scoped>
 #Layout {
-  .main-container{
+  .main-container {
     display: flex;
     overflow: auto;
   }
-  .content{
-    width: 100%
+  .content {
+    width: 100%;
   }
 }
 </style>
