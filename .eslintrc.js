@@ -24,8 +24,8 @@ module.exports = {
     "error" -> 2 开启错误规则
   */
   rules: {
-    'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+    'no-console':  'off',
+    'no-debugger':'off',
 
     "accessor-pairs": 2, // 在对象中使用getter/setter
     "comma-dangle": [2, "never"], // 对象字面量项尾不能有逗号
