@@ -4,7 +4,7 @@
  * @Date: 2018-08-27 13:49:09
  * @Last Modified time: 2018-08-27 13:49:09
  */
-import Local from '@utils/local'
+// import Local from '@utils/local'
 import createLogger from 'vuex/dist/logger'
 const _DEBUG = process.env.NODE_ENV !== 'production'
 
@@ -12,7 +12,7 @@ export default {
     setLocal(store) {
         // 当 store 初始化后调用
         store.subscribe((mutation, state) => {
-            Local.setItem('vuex', state)
+            // Local.setItem('vuex', state)
         })
     },
     logger: _DEBUG ? createLogger({
