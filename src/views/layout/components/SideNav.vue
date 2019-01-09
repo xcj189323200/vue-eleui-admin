@@ -1,6 +1,6 @@
 <template>
   <el-aside :class="{'not-open':!sidebar.opened, 'is-open': sidebar.opened}"  width="200px" id="sideMenu">
-    <el-menu default-active="2" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" :collapse="!sidebar.opened" background-color="#304156" text-color="#bfcbd9" active-text-color="#409EFF">
+    <el-menu :default-openeds="subMenuActive" :default-active="childMenuActive" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" :collapse="!sidebar.opened" background-color="#304156" text-color="#bfcbd9" active-text-color="#409EFF">
       <template v-for="(item) in datas">
         <el-submenu class="nav-item" :index="item.groupName" :key="item.path">
           <template slot="title">
@@ -23,6 +23,8 @@ import { mapGetters } from 'vuex'
 export default {
   data() {
     return {
+      subMenuActive: [], // 一级菜单选中的菜单
+      childMenuActive: '', // 二级菜单选中的菜单
       isCollapse: true,
       datas: [
         {
@@ -75,6 +77,17 @@ export default {
     clickToggle () {
       this.opened = !this.opened
     }
+  },
+  watch: {
+    $route: {
+      handler (val) {
+        console.log(this.$route)
+        const { name, meta } = val
+        this.subMenuActive = [meta.title || '']
+        this.childMenuActive = name || 'home'
+      },
+      immediate: true
+    }
   }
 }
 </script>
@@ -105,5 +118,20 @@ export default {
       color: #409eff;
     }
   }
+  .active {
+          background-color: $tabColor;
+          color: #fff;
+          border-color: $tabColor;
+          &::before {
+            content: "";
+            background: #fff;
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            position: relative;
+            margin-right: 2px;
+          }
+        }
 }
 </style>

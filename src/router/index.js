@@ -49,7 +49,7 @@ export default new Router({
         {
           name: 'storeInfo-edit',
           path: 'edit',
-          meta: { title: '门店基本信息', keepAlive: true },
+          meta: { title: '门店基本信息表', keepAlive: true },
           component: () => import('../views/storeInfo/edit.vue')
         }
       ]
@@ -62,21 +62,8 @@ export default new Router({
         {
           name: 'storeTrain-info',
           path: 'info',
-          meta: { title: '门店基本信息', keepAlive: true },
+          meta: { title: '门店培训详情', keepAlive: true },
           component: () => import('../views/storeTrain/info.vue')
-        }
-      ]
-    },
-    {
-      path: '/storeInfo',
-      component: Layout,
-      hidden: true,
-      children: [
-        {
-          name: 'storeInfo-edit',
-          path: 'edit',
-          meta: { title: '门店基本信息', keepAlive: true },
-          component: () => import('../views/storeInfo/edit.vue')
         }
       ]
     },
