@@ -5,7 +5,7 @@
  * @Last Modified time: 2018-08-27 13:49:09
  */
 
-// import MutationsType from "./type";
+import MutationsType from './type'
 import Api from '@api'
 
 export default {
@@ -17,5 +17,8 @@ export default {
         document.cookie = '_DJ_TOKEN=; expires=Mon, 11 Nov 1990 00:00:00 GMT; domain=.17dianjia.net;path=/'
         window.location.href = `${Api.ADMIN_HOST}/passport/login.do?redirectURL=${window.location.href}`
         // window.location.href = `${Api.ADMIN_HOST}/passport/login.do?redirectURL=${Api.HOST}`;
+    },
+    changeSidbar: ({ commit }, query) => {
+      commit(MutationsType.SET_SIDERBAR_TOGGLE)
     }
 }

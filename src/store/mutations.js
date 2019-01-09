@@ -12,7 +12,7 @@ export default {
   // [MutationsType.SET_TOKEN](state, data) {
   //    return state.users.isLogin = data;
   // },
-  [MutationsType.SET_SIDERBAR_TOGGLE](state, data) {
-    state.sidebar = data
+  [MutationsType.SET_SIDERBAR_TOGGLE](state) {
+    state.sidebar.opened = !state.sidebar.opened
   }
 }

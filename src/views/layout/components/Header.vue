@@ -61,14 +61,17 @@ export default {
       this.loginOut()
     },
     toggleSideBar () {
-
+      this.$store.dispatch('changeSidbar')
+      console.log(this.sidebar.opened)
     }
   },
   created() {
     const { _userName } = Utils.getCookie()
     this.userName = _userName
   },
-  mounted() { },
+  mounted() {
+    // console.log(this.sidebar)
+   },
   destroyed() { },
   watch: {}
 }
@@ -79,8 +82,15 @@ export default {
   height: 50px;
   line-height: 50px;
   width: 100%;
+  display: flex;
   .header_left {
-    float: left;
+    // float: left;
+    flex: 1;
+    display: flex;
+    .hamburger-container{
+      display: flex;
+      align-items: center;
+    }
   }
   .header_right {
     float: right;
