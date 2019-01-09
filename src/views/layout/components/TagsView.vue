@@ -2,9 +2,9 @@
   <div class="tags-view-container">
     <div class="tags-view-wrapper">
       <el-scrollbar ref="scrollContainer" :vertical="false" class="scroll-container">
-        <router-link v-for="(tag,index) in tagList" :key="tag.path" :class="isActive(tag)?'active':''" :to="{ path: tag.path, query: tag.query, fullPath: tag.fullPath }" tag="span" class="tags-view-item">
+        <router-link v-for="tag in tags.list" :key="tag.path" :class="isActive(tag)?'active':''" :to="{ path: tag.path, query: tag.query, fullPath: tag.fullPath }" tag="span" class="tags-view-item">
           {{ tag.meta.title || '未知'}}
-          <span class="el-icon-close" @click.stop="closeTag_clickHandler(tag,index)"/>
+          <span class="el-icon-close" @click.stop="closeTag_clickHandler(tag.name)"/>
         </router-link>
       </el-scrollbar>
     </div>
@@ -12,28 +12,21 @@
 </template>
 
 <script>
-
+import { mapState, mapActions } from 'vuex'
 export default {
   components: {},
   data() {
     return {
-      tagList: [],
-      cacheViews: []
+      tagList: []
     }
   },
   computed: {
-
+    ...mapState(['tags'])
   },
   watch: {
     $route: {
       handler(val) {
-        this.addViewTags()
-      },
-      immediate: true
-    },
-    cacheViews: {
-      handler(val) {
-        this.$emit('getCacheView', val)
+        this.addTags(val)
       },
       immediate: true
     }
@@ -41,26 +34,19 @@ export default {
   mounted() {
   },
   methods: {
-    addViewTags() {
-      const { name, meta } = this.$route
-      const isAddRoute = this.tagList.some((k) => { return k.name === name })
-      if (name && !isAddRoute) {
-        meta.keepAlive && this.cacheViews.push(name)
-        this.tagList.push(this.$route)
-      }
-      return false
-    },
+    ...mapActions(['addTags', 'delTags']),
     isActive(route) {
       return route.path === this.$route.path
     },
-    closeTag_clickHandler(tag = {}, index) {
-      const { name } = this.$route
-      const _spliceRoute = this.tagList.splice(index, 1)[0]
-      this.cacheViews = this.cacheViews.filter(r => { return r !== _spliceRoute.name })
-      if (tag.name === name) {
-        const { fullPath } = this.tagList[0] || { fullPath: 'home' }
-        this.$router.push({ path: fullPath })
-      }
+    closeTag_clickHandler(_name) {
+      this.delTags(_name).then((tagList) => {
+        const { name } = this.$route
+        console.log(tagList, 'tagList')
+        if (name === _name) {
+          const { fullPath } = tagList[0] || { fullPath: 'home' }
+          this.$router.push({ path: fullPath })
+        }
+      })
     }
   }
 }

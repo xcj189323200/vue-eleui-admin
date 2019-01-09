@@ -5,11 +5,11 @@
       <div class="content">
         <Header></Header>
 
-        <tags-view @getCacheView="getCacheView_handler"/>
+        <tags-view/>
 
         <transition name="fade-transform" mode="out-in">
           <div class="main-view">
-            <keep-alive :include="cacheList">
+            <keep-alive :include="tags.cacheViews">
               <router-view :key="this.$route.fullPath"/>
             </keep-alive>
           </div>
@@ -20,6 +20,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import Header from './components/Header'
 import TagsView from './components/TagsView'
 import SideNav from './components/SideNav'
@@ -27,9 +28,11 @@ export default {
   name: 'Layout',
   data() {
     return {
-      cacheList: [],
       getScreenHeight: 600 + 'px'
     }
+  },
+  computed: {
+    ...mapState(['tags'])
   },
   components: {
     Header,
@@ -46,10 +49,6 @@ export default {
     }
   },
   methods: {
-
-    getCacheView_handler(val) {
-      this.cacheList = val
-    }
   }
 }
 </script>
