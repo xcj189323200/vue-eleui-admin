@@ -29,45 +29,6 @@ export default new Router({
       ]
     },
     {
-      path: '/storeOrder',
-      component: Layout,
-      hidden: true,
-      children: [
-        {
-          name: 'storeOrder-list',
-          path: 'list',
-          meta: { title: '门店订单检测分析', keepAlive: true },
-          component: () => import('../views/storeOrder/list.vue')
-        }
-      ]
-    },
-    {
-      path: '/storeInfo',
-      component: Layout,
-      hidden: true,
-      children: [
-        {
-          name: 'storeInfo-edit',
-          path: 'edit',
-          meta: { title: '门店基本信息表', keepAlive: true },
-          component: () => import('../views/storeInfo/edit.vue')
-        }
-      ]
-    },
-    {
-      path: '/storeTrain',
-      component: Layout,
-      hidden: true,
-      children: [
-        {
-          name: 'storeTrain-info',
-          path: 'info',
-          meta: { title: '门店培训详情', keepAlive: true },
-          component: () => import('../views/storeTrain/info.vue')
-        }
-      ]
-    },
-    {
       path: '/login',
       name: 'login',
       meta: { isSide: true }

@@ -28,32 +28,16 @@ export default {
       isCollapse: true,
       datas: [
         {
-          groupName: '门店订单检测分析',
-          path: 'storeOrder',
+          groupName: '首页',
+          path: 'home',
           children: [
             {
-              urlLink: 'storeOrder-list',
-              permissionName: '门店订单检测分析'
-            }
-          ]
-        },
-        {
-          groupName: '门店基本信息表',
-          path: 'storeInfo',
-          children: [
-            {
-              urlLink: 'storeInfo-edit',
-              permissionName: '编辑页面'
-            }
-          ]
-        },
-        {
-          groupName: '门店培训详情',
-          path: 'storeTrain',
-          children: [
-            {
-              urlLink: 'storeTrain-info',
-              permissionName: '门店培训详情'
+              urlLink: 'home',
+              permissionName: '首页'
+            },
+             {
+              urlLink: 'about',
+              permissionName: '关于我'
             }
           ]
         }
@@ -82,9 +66,10 @@ export default {
     $route: {
       handler (val) {
         console.log(this.$route)
-        const { name, meta } = val
-        this.subMenuActive = [meta.title || '']
-        this.childMenuActive = name || 'home'
+        const { matched } = val
+        console.log(matched, 'matched')
+        // this.subMenuActive = [meta.title || '']
+        // this.childMenuActive = name || 'home'
       },
       immediate: true
     }
